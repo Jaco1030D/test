@@ -14,7 +14,7 @@ const FileUploader = () => {
       const formData = new FormData();
       formData.append('file', selectedFile);
 
-      const response = await axios.post('https://strong-beignet-130f7f.netlify.app/translate', formData, {
+      const response = await axios.post('https://strong-beignet-130f7f.netlify.app/.netlify/functions/api/translate', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
