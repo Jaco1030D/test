@@ -1,4 +1,4 @@
-import {FileUploader} from './components/fileUploader';
+import FileUploader from './components/fileUploader';
 
 const App = () => {
   return (
