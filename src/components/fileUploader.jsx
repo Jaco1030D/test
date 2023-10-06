@@ -17,6 +17,7 @@ const FileUploader = () => {
       const response = await axios.post('https://strong-beignet-130f7f.netlify.app/translate', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          "Access-Control-Allow-Origin": "*"
         },
         responseType: 'arraybuffer'
       });
