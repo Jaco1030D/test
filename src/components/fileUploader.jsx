@@ -21,9 +21,7 @@ const FileUploader = () => {
         responseType: 'arraybuffer'
       });
 
-      console.log(response.data);
-
-        const blob = new Blob([response.data]);
+        const blob = new Blob([response.data], { type: 'application/pdf' });
 
         // Cria um link temporário e simula um clique nele para iniciar o download
         const link = document.createElement('a');
