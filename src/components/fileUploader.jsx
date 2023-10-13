@@ -14,31 +14,19 @@ const FileUploader = () => {
       const formData = new FormData();
       formData.append('file', selectedFile);
 
-      // const response = await axios.post('http://localhost:5000/translate', formData, {
-      const response = await axios.post('https://grand-gumdrop-652d17.netlify.app/.netlify/functions/api/translate', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        },
-        responseType: 'arraybuffer'
-      })
+      // const response = await axios.post('http://localhost:3000/translate', formData, {
+        const { data } = await axios.post(
+            '/.netlify/functions/upload',
+            formData,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            },
+        );
+      console.log('Upload successful:', data);
 
-      const blob = new Blob([response.data], { type: 'application/pdf' });
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.download = 'seu_arquivo.pdf';
-
-      // Adicione o link ao corpo
-      document.body.appendChild(link);
-
-      // Aguarde um pouco antes de acionar o clique
-      setTimeout(() => {
-        link.click();
-
-        // Remova o link após o clique
-        document.body.removeChild(link);
-      }, 1000);
-
-      // const blob = new Blob([response.data], { type: 'application/pdf' });
+      // const blob = new Blob([data], { type: 'application/pdf' });
 
       // // Cria um link temporário e simula um clique nele para iniciar o download
       // const link = document.createElement('a');
@@ -47,7 +35,7 @@ const FileUploader = () => {
       // document.body.appendChild(link);
       // link.click();
       
-      // Remove o link do corpo do documento
+      // // Remove o link do corpo do documento
       // document.body.removeChild(link);
 
 
